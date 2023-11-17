@@ -9,10 +9,10 @@ import {
 } from "@builder.io/qwik";
 import type { DocumentHead } from "@builder.io/qwik-city";
 import { WavRecorder } from "webm-to-wav-converter";
-import Loader from "~/components/ui/Loader";
+import Loader from "~/shared/Loader/Loader";
 // import { NotWorking, Working } from "~/components/ui/IconMicrophone";
 // import Loader from "~/components/ui/Loader";
-import TextBlock from "~/components/ui/message/TextBlock";
+import TextBlock from "~/features/TextBlock/TextBlock";
 import {
   speech_to_speech,
   speech_to_text,
@@ -20,6 +20,7 @@ import {
   text_to_text,
 } from "~/utils/fetch/aiFetches";
 import { toBase64 } from "~/utils/toBase64";
+import MenuActionButtons from "~/widgets/menuActionButtons/menuActionButtons";
 
 export interface Messages {
   sender: "agent" | "customer";
@@ -227,26 +228,26 @@ export default component$(() => {
     container.scrollTop = container.scrollHeight;
   });
 
+
+
+
+
+
   return (
     <div class="flex flex-col items-center bg-neutral-900 px-5">
       <div
         id="container"
-        class="min-h-[650px] mb-24 mt-20 flex w-full max-w-[626px] flex-col items-center rounded-[30px] border border-solid border-[color:var(--1,#9363FD)] bg-[linear-gradient(180deg,#000_0%,#171717_100%)] px-20 pb-5 shadow-xl backdrop-blur-[11.267770767211914px] max-md:my-10 max-md:max-w-full max-md:px-5"
+        class="mb-24 mt-20 flex min-h-[650px] w-full max-w-[626px] flex-col items-center rounded-[30px] border border-solid border-[color:var(--1,#9363FD)] bg-[linear-gradient(180deg,#000_0%,#171717_100%)] px-20 pb-5 shadow-xl backdrop-blur-[11.267770767211914px] max-md:my-10 max-md:max-w-full max-md:px-5"
       >
         {/* navbar */}
-        {/* <img
-          loading="lazy"
-          srcSet="https://cdn.builder.io/api/v1/image/assets/TEMP/e6ff382d-09de-4201-a5ce-a6c6e8d41d36?apiKey=4ee1ab436a574a03ab1d88779932e6a6&width=100 100w, https://cdn.builder.io/api/v1/image/assets/TEMP/e6ff382d-09de-4201-a5ce-a6c6e8d41d36?apiKey=4ee1ab436a574a03ab1d88779932e6a6&width=200 200w, https://cdn.builder.io/api/v1/image/assets/TEMP/e6ff382d-09de-4201-a5ce-a6c6e8d41d36?apiKey=4ee1ab436a574a03ab1d88779932e6a6&width=400 400w, https://cdn.builder.io/api/v1/image/assets/TEMP/e6ff382d-09de-4201-a5ce-a6c6e8d41d36?apiKey=4ee1ab436a574a03ab1d88779932e6a6&width=800 800w, https://cdn.builder.io/api/v1/image/assets/TEMP/e6ff382d-09de-4201-a5ce-a6c6e8d41d36?apiKey=4ee1ab436a574a03ab1d88779932e6a6&width=1200 1200w, https://cdn.builder.io/api/v1/image/assets/TEMP/e6ff382d-09de-4201-a5ce-a6c6e8d41d36?apiKey=4ee1ab436a574a03ab1d88779932e6a6&width=1600 1600w, https://cdn.builder.io/api/v1/image/assets/TEMP/e6ff382d-09de-4201-a5ce-a6c6e8d41d36?apiKey=4ee1ab436a574a03ab1d88779932e6a6&width=2000 2000w, https://cdn.builder.io/api/v1/image/assets/TEMP/e6ff382d-09de-4201-a5ce-a6c6e8d41d36?apiKey=4ee1ab436a574a03ab1d88779932e6a6&"
-          class="aspect-[5.95] w-full overflow-hidden object-contain object-center max-md:max-w-full"
-        /> */}
+       <MenuActionButtons />
         {messages.data.map((el, i) => (
           <TextBlock data={el} key={i} />
         ))}
         <div class="mt-2 flex justify-between gap-4 self-stretch max-md:mr-px max-md:max-w-full max-md:flex-wrap">
-
-         <div class={'w-5 h-5'}>
-            {isLoading.value && <Loader loadingText="Loading..."/>}
-        </div>
+          <div class={"h-5 w-5"}>
+            {isLoading.value && <Loader loadingText="Loading..." />}
+          </div>
         </div>
         <button
           onClick$={

@@ -14,7 +14,6 @@
  *
  */
 html {
-  -webkit-text-size-adjust: 100%;
   -moz-tab-size: 4;
   -o-tab-size: 4;
   tab-size: 4;
@@ -35,12 +34,15 @@ html {
     "Noto Color Emoji";
 }
 
-body {
+* {
+  margin: 0;
   padding: 0;
-  line-height: inherit;
 }
 
 
+
+
+/* audio  */
 audio::-webkit-media-controls-panel{
   background-color:#000;
 

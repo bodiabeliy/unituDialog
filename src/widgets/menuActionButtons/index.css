@@ -1,0 +1,136 @@
+/* /actionBtns */
+
+.menuActionButtons__wrapper {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.menuActionsButtons__toggler {
+    position: relative;
+    width: 65px;
+    height: 65px;
+    background-image: url("https://cdn.builder.io/api/v1/image/assets/TEMP/e011c616-328d-4bec-916a-72aa52a1cb04?apiKey=4ee1ab4…&width=100 100w, https://cdn.builder.io/api/v1/image/assets/TEMP/e011c616-328d-4bec-916a-72aa52a1cb04?apiKey=4ee1ab4…&width=200 200w, https://cdn.builder.io/api/v1/image/assets/TEMP/e011c616-328d-4bec-916a-72aa52a1cb04?apiKey=4ee1ab4…&width=400 400w, https://cdn.builder.io/api/v1/image/assets/TEMP/e011c616-328d-4bec-916a-72aa52a1cb04?apiKey=4ee1ab4…&width=800 800w, https://cdn.builder.io/api/v1/image/assets/TEMP/e011c616-328d-4bec-916a-72aa52a1cb04?apiKey=4ee1ab4…&width=1200 1200w, https://cdn.builder.io/api/v1/image/assets/TEMP/e011c616-328d-4bec-916a-72aa52a1cb04?apiKey=4ee1ab4…&width=1600 1600w, https://cdn.builder.io/api/v1/image/assets/TEMP/e011c616-328d-4bec-916a-72aa52a1cb04?apiKey=4ee1ab4…&width=2000 2000w, https://cdn.builder.io/api/v1/image/assets/TEMP/e011c616-328d-4bec-916a-72aa52a1cb04?apiKey=4ee1ab4…&");
+    background-repeat: round;
+    border: 5px solid #000;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: translateY(-30px);
+    transition: 1.5s;
+    z-index: 10;
+
+}
+
+.menuActionsButtons__toggler::before {
+    content: "";
+    position: absolute;
+    font-size: 3em;
+    color: #fff;
+    transition: 1.5s;
+}
+
+.menuActionsButtons__toggler:is(.is-active) {
+    -webkit-box-shadow: 0px -10px 17px -1px rgba(147, 99, 253, 1);
+    -moz-box-shadow: 0px -10px 17px -1px rgba(147, 99, 253, 1);
+    box-shadow: 0px -10px 17px -1px rgba(147, 99, 253, 1);
+}
+
+.menuActionsButtons__toggler:is(.is-active)>span {
+    color: transparent;
+}
+
+.menuActionsButtons__toggler:not(.is-active)>span {
+    position: absolute;
+    top: 0px;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: inline-block;
+    border-radius: 50%;
+    background-color: rgba(147, 99, 253, 1);
+    animation: pulse 2s linear infinite;
+    text-align: center;
+    padding-top: 8px;
+    color: #fff
+}
+
+.menuActionsButtons__toggler.is-active::before {
+    transform: rotate(225deg);
+
+}
+
+.menuActionsButtons__toggler i {
+    position: absolute;
+    inset: 0;
+
+}
+
+.menuActionsButtons__toggler i::before {
+    content: "";
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: transparent;
+    top: 25px;
+    left: -23px;
+    border-top-right-radius: 20px;
+    box-shadow: 3px -6px rgba(0, 0, 0, 1);
+}
+
+.menuActionsButtons__toggler i::after {
+    content: "";
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: transparent;
+    top: 25px;
+    right: -23px;
+    border-top-left-radius: 20px;
+    box-shadow: -3px -6px rgba(0, 0, 0, 1);
+}
+
+.menuActionsButtons__toggler.is-active~.menuActionsButtons__content {
+    width: 360px;
+    height: 70px;
+    transform: translateY(4px);
+    transition-delay: 0s, 0.5s, 0.5s;
+
+}
+
+
+
+
+
+@keyframes pulse {
+    0% {
+        transform: scale(0.3);
+        opacity: 1;
+    }
+
+    70% {
+        transform: scale(1);
+    }
+
+    100% {
+        transform: scale(1.4);
+        opacity: 0;
+    }
+}
+
+.menuActionsButtons__content {
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    background-color: #313131;
+    border-radius: 70px;
+    border-top-color: var(--1, #9363FD);
+    transform: translateY(-30px);
+    transition: transform 0.5s, width 0.5s, height 0.5s;
+    transition-delay: 1s, 0.5s, 0.5s;
+
+
+}
