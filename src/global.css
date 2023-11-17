@@ -39,3 +39,59 @@ body {
   padding: 0;
   line-height: inherit;
 }
+
+
+audio::-webkit-media-controls-panel{
+  background-color:#000;
+
+}
+audio::-webkit-media-controls-play-button{
+  background-image: url("https://cdn.builder.io/api/v1/image/assets/TEMP/07755bcb-866e-47e7-b2f2-275237ea4566?apiKey=4ee1ab436a574a03ab1d88779932e6a6&");
+  border-radius: 50%;
+  transform: scale(1.5)
+};
+
+audio::-webkit-media-controls-current-time-display {
+  display: none;
+}
+audio::-webkit-media-controls-time-remaining-display {
+  display: flex;
+  flex-direction: row-reverse;
+  color: #fff;
+}
+
+
+audio::-webkit-media-controls-timeline{
+ background-color: #fff;
+ padding: 1px;
+ margin-left: 10px;
+ width: 100%;
+} 
+
+
+audio::-webkit-media-controls-current-time-display {
+  /* display: none; */
+  color: #fff;
+}
+audio::-webkit-media-controls-volume-slider {
+  padding: 0;
+  margin-top: 13px;
+  margin-right: 20px;
+  background-color: rgb(196 181 253);
+}
+audio::-webkit-media-controls-mute-button{
+  position: absolute;
+  right: -30px;
+  background-image: url("https://cdn.builder.io/api/v1/image/assets/TEMP/e0526201-1a13-413f-874d-d80ab9dd8cc4?apiKey=4ee1ab436a574a03ab1d88779932e6a6&");
+  border-radius: 50%;
+  transform: scale(1.75);
+  z-index: 5;
+};
+audio::-webkit-media-controls-seek-back-button,
+audio::-webkit-media-controls-seek-forward-button,
+audio::-webkit-media-controls-fullscreen-button,
+audio::-webkit-media-controls-rewind-button,
+audio::-webkit-media-controls-return-to-realtime-button,
+audio::-webkit-media-controls-toggle-closed-captions-button {
+  display: none;
+}
