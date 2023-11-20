@@ -1,0 +1,67 @@
+.speechButton__wrapper {
+    height: 400px;
+    /* transform: translateY(270px); */
+}
+
+.speechButton {
+    position: absolute;
+    bottom: 120px;
+    z-index: 11;
+}
+
+.speechButton::before,
+.speechButton::after {
+    content: '';
+    display: block; 
+    position: absolute; 
+    border: 50%;
+    
+    border: 1px solid #fff; 
+    Left: -20px; 
+    right: -20px;
+    top: -40px;
+    bottom: -20px;
+    transform:scale(0.12)
+    translateY(137%);
+    border-radius: 50%;
+    animation: pulsing 1.5s linear infinite;
+}
+.speechButton:is(.is-active)::before,
+.speechButton:is(.is-active)::after {
+    border: none;
+    animation: none;
+}
+
+.speechButton:is(.is-active),
+.speechButton:is(.is-active) {
+    transition: 1s;
+    filter: hue-rotate(90deg);
+}
+
+@keyframes pulsing {
+    0% {
+        border-color: #9363FD; 
+
+        opacity: 0.2;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        border-color: #fff; 
+
+        transform: translate(0.3px) scale(1);
+        opacity: 0.5;
+        filter: blur(13px);
+
+    }
+}
+.speechButton__visualizer {
+    opacity: 0;
+    max-width: 300px;
+    transition: 1s;
+}
+.speechButton:is(.is-active) ~ .speechButton__visualizer{
+    height: 100%;
+    opacity: 1;
+}

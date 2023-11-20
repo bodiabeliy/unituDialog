@@ -39,7 +39,10 @@ html {
   padding: 0;
 }
 
-
+.dialog__content {
+  max-height: 450px;
+  overflow-y: scroll;
+}
 
 
 /* audio  */
@@ -96,4 +99,27 @@ audio::-webkit-media-controls-rewind-button,
 audio::-webkit-media-controls-return-to-realtime-button,
 audio::-webkit-media-controls-toggle-closed-captions-button {
   display: none;
+}
+
+/* scrollbar */
+
+/* width */
+::-webkit-scrollbar {
+  width: 5px;
+  color: #000;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #000;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background:  rgb(196 181 253);;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background:   rgba(147, 99, 253, 1);
 }

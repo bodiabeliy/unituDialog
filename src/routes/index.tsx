@@ -21,6 +21,7 @@ import {
 } from "~/utils/fetch/aiFetches";
 import { toBase64 } from "~/utils/toBase64";
 import MenuActionButtons from "~/widgets/menuActionButtons/menuActionButtons";
+import SpeechBlock from "~/features/SpeechBlock/SpeechBlock";
 
 export interface Messages {
   sender: "agent" | "customer";
@@ -241,35 +242,27 @@ export default component$(() => {
       >
         {/* navbar */}
        <MenuActionButtons />
+        <div class="dialog__content max-h-[500px] overscroll-auto	">
         {messages.data.map((el, i) => (
           <TextBlock data={el} key={i} />
         ))}
-        <div class="mt-2 flex justify-between gap-4 self-stretch max-md:mr-px max-md:max-w-full max-md:flex-wrap">
-          <div class={"h-5 w-5"}>
-            {isLoading.value && <Loader loadingText="Loading..." />}
+          <div class="mt-2 flex justify-between gap-4 self-stretch max-md:mr-px max-md:max-w-full max-md:flex-wrap">
+            <div class={"h-5 w-5"}>
+              {isLoading.value && <Loader loadingText="Loading..." />}
+            </div>
           </div>
         </div>
-        <button
-          onClick$={
-            responseType.value === "text"
-              ? handleSpeechToText
-              : handleSpeechToSpeech
-          }
-          preventdefault:click
-        >
-          {/* <span class={"h-6 w-6"}>
-            {isRecording.value ? <Working /> : <NotWorking />}
-          </span> */}
-          <img
-            loading="lazy"
-            srcSet="https://cdn.builder.io/api/v1/image/assets/TEMP/9703c752-88a5-4af3-99e5-ad95e588e0f6?apiKey=4ee1ab436a574a03ab1d88779932e6a6&width=100 100w, https://cdn.builder.io/api/v1/image/assets/TEMP/9703c752-88a5-4af3-99e5-ad95e588e0f6?apiKey=4ee1ab436a574a03ab1d88779932e6a6&width=200 200w, https://cdn.builder.io/api/v1/image/assets/TEMP/9703c752-88a5-4af3-99e5-ad95e588e0f6?apiKey=4ee1ab436a574a03ab1d88779932e6a6&width=400 400w, https://cdn.builder.io/api/v1/image/assets/TEMP/9703c752-88a5-4af3-99e5-ad95e588e0f6?apiKey=4ee1ab436a574a03ab1d88779932e6a6&width=800 800w, https://cdn.builder.io/api/v1/image/assets/TEMP/9703c752-88a5-4af3-99e5-ad95e588e0f6?apiKey=4ee1ab436a574a03ab1d88779932e6a6&width=1200 1200w, https://cdn.builder.io/api/v1/image/assets/TEMP/9703c752-88a5-4af3-99e5-ad95e588e0f6?apiKey=4ee1ab436a574a03ab1d88779932e6a6&width=1600 1600w, https://cdn.builder.io/api/v1/image/assets/TEMP/9703c752-88a5-4af3-99e5-ad95e588e0f6?apiKey=4ee1ab436a574a03ab1d88779932e6a6&width=2000 2000w, https://cdn.builder.io/api/v1/image/assets/TEMP/9703c752-88a5-4af3-99e5-ad95e588e0f6?apiKey=4ee1ab436a574a03ab1d88779932e6a6&"
-            class="mt-2 aspect-square w-[72px] max-w-full overflow-hidden object-contain object-center"
-          />
-        </button>
+        <SpeechBlock 
+          responseType={responseType.value} 
+          handleTextToText={handleSpeechToText} 
+          handleTextToSpeech={handleSpeechToSpeech} 
+          inputValue={text.value}
+        />
         <div class="mt-11 flex w-[365px] max-w-full items-stretch justify-center gap-4 self-center max-md:mt-10">
-          <div class="grow whitespace-nowrap rounded-xl border-[0.9px] border-solid border-[color:var(--,rgba(255,255,255,0.63))] bg-zinc-800 px-3.5 py-4 text-base font-medium leading-6 tracking-wide text-neutral-200">
-            |
-          </div>
+          <input
+            onInput$={e => text.value = (e.target as HTMLInputElement).value}
+           class="grow whitespace-nowrap rounded-xl border-[0.9px] border-solid border-[color:var(--,rgba(255,255,255,0.63))] bg-zinc-800 px-3.5 py-4 text-base font-medium leading-6 tracking-wide text-neutral-200" />
+
           <div class="flex aspect-[1.0444444444444445] flex-col items-center justify-center rounded-xl border border-solid border-[color:var(--1,#9363FD)] bg-zinc-800 px-3.5 py-4">
             <button
               onClick$={() =>
